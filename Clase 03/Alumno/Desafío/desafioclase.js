@@ -1,4 +1,4 @@
-var firstName = prompt("ingrese su nombre")
+var textopromt = prompt("ingrese su nombre")
 
 listadealumnos = [
     {
@@ -34,4 +34,6 @@ return -1
 
 }
 
-console.log(busquedaAlumno(textobuscar,listAlumnos)
+var resultado = busquedaAlumno(textopromt, listadealumnos)
+
+console.log('El resultado es' + resultado)
