@@ -1,68 +1,105 @@
-//CLASE 09 STORAGE!!
+//accediendo al nodo mediante el attributo Id
+var divPrueba = document.getElementById('prueba')
 
-var nombres = [ 'Pedro', 'Maria', 'Oscar' ]
+//ingresar un contenido al div
+// divPrueba.innerHTML = 'Bienvenido al curso de programación web.'
 
-// sessionStorage.setItem('arregloPersonas', nombres)
+//Accediendo a nodos por el nombre de clase.
 
-var nombresFromSessionStorage = sessionStorage.getItem('arregloPersonas')
+// var nodosPorClase = document.getElementsByClassName('clase10')
 
-// console.log('Arreglo obtenido del session storage ' + nombresFromSessionStorage)
+// // nodosPorClase[0].innerHTML = 'PARRAFO 1'
+// // nodosPorClase[1].innerHTML = 'PARRAFO 2'
 
-//CLASE 09 LOCAL STORAGE!!
+// console.log(nodosPorClase)
 
-var nombres2 = [ 'Pedro', 'Maria', 'Oscar' ]
+//HACER UN SCRIPT QUE PIDA UN NOMBRE AL USUARIO, Y MUESTRE UN MENSAJE
+//HOLA (NOMBRE_RECIBIDO), BUENOS DIAS
+//EN UN DIV EN UNA PAGINA HTML.
 
-// localStorage.setItem('arregloPersonas', nombres)
+//PEDIR NOMBRE AL USUARIO
+var nombreIngresado = prompt('Ingrese nombre')
 
-var nombresFromLocalStorage = localStorage.getItem('arregloPersonas')
+//Obtengo el div para escribir el mensaje
+var divContenedor = document.getElementById('contenedorMensaje')
 
-console.log('Arreglo obtenido del session storage ' + nombresFromLocalStorage)
+//ingresar un contenido al div
+divContenedor.innerHTML = `Hola ${nombreIngresado}, buenos dias`
 
-//USANDO REMOVE ITEM
+//CREAR UN SCRIPT QUE BUSQUE TODOS LOS PARRAFOS QUE TENGAN UNA CLASE X Y
+//LES PONGA COMO CONTENIDO, SOY EL PARRAFO Nro (Numero del parrafo)
 
-localStorage.removeItem('arregloPersonas')
+//SOY EL PARRAFO 1
+//SOY EL PARRAFO 2
+//SOY EL PARRAFO 3
+//SOY EL PARRAFO 4
+//SOY EL PARRAFO 5
 
-nombresFromLocalStorage = localStorage.getItem('arregloPersonas')
+//ALTERNATIVA FOR COMUN
 
-console.log('Arreglo obtenido del session storage ' + nombresFromLocalStorage)
+//obtengo los nodos de los parrafos con clase parrafo
+var parrafos = document.getElementsByClassName('parrafo')
 
-//HAGAMOS UN SCRIPT QUE TOME UN NOMBRE INGRESADO POR EL USUARIO, LO PERSISTA EN EL LOCAL STORAGE
-// Y LUEGO LO RECUPERE PARA MOSTRAR UN MENSAJE PERSONALIZADO 'HOLA NOMBRE, BUENOS DIAS.'
+// for (var posicion = 0; posicion < parrafos.length; posicion++) {
+//   parrafos[posicion].innerHTML = `Soy el parrafo Nro : ${posicion + 1}`
+// }
 
-//OBTENIENDO NOMBRE DE USUARIO
-var nombreUsuario = prompt('Ingrese nombre')
+//ALTERNATIVA FOR EACH
 
-//PERSISITENDO VALOR EN EL LOCAL STORAGE
-localStorage.setItem('nombrePersistido', nombreUsuario)
+//CONVIERTE UNA LISTA DE NODOS EN UN ARRAY DE JAVASCRIPT
+parrafos = Array.from(parrafos)
 
-//OBTENIENDO NOMBRE DEL LOCAL STORAGE
-var nombreDesdeLS = localStorage.getItem('nombrePersistido')
+parrafos.forEach((parrafo, posicion) => {
+  parrafo.innerHTML = `Soy el parrafo Nro : ${posicion + 1}`
+})
 
-//IMPRIMIR EN CONSOOLA EL NOMBRE OBTENIDO
-console.log(`Hola ${nombreDesdeLS}, Buenos dias`)
+//Obtengo la lista creada vacia
+var lista = document.getElementById('lista')
 
-//DECLARO OBJECTO JAVASCRIPT PERSONA
-var persona = {
-  nombre: 'pedro',
-  edad: 28
+//inicializo variable para almacenar el nuevo listItem creado.
+var listItemNode
+
+for (var i = 0; i < 10; i++) {
+  //creo un nuevo listItem vacio.
+  listItemNode = document.createElement('li')
+
+  //Agrego contenido al nuevo elemento creado.
+  listItemNode.innerHTML = `Hola soy el Item de la lista Nro ${i + 1} `
+
+  //agrego el nuevo elemento hijo creado al nodo padre, osea la lista.
+  lista.appendChild(listItemNode)
 }
 
-//SERIALIZAR O CONVERTIR A JSON EL OBJECTO PERSONA.
-var personaJson = JSON.stringify(persona)
+//HACEMOS UN SCRIPT QUE MODIFIQUE EL PADRE DE UN NODO Y LUEGO ESE NODO SE ELIMINE.
 
-console.log('Persona JSON ' + personaJson.toUpperCase())
+//obtenemos el nodo hijo mediante el id
+var nodoHijo = document.getElementById('child')
 
-var personaNombreJSON = personaJson.nombre
-console.log(
-  'Este es el nombre de la persona desde el objeto JSON :' + personaNombreJSON
-)
+//busco el padre del nodoHijo
+var nodoPadre = nodoHijo.parentNode
 
-var personaJavascript = JSON.parse(personaJson)
+//modifico el texto del nodo padre
+// nodoPadre.innerHTML = 'PADRE MODIFICADO'
 
-console.log('PERSONA JAVASCRIPT')
-console.log(personaJavascript)
+//elimino el nodo hijo dentro del padre.
+nodoPadre.removeChild(nodoHijo)
 
-console.log(
-  'Este es el nombre de la persona desde el objeto JAVSCRIPT :' +
-    personaJavascript.nombre
-)
+//CREO UN NUEVO HIJO
+var nuevoHijo = document.createElement('div')
+
+nuevoHijo.innerHTML = 'ESTE ES EL NUEVO HIJO'
+
+nodoPadre.appendChild(nuevoHijo)
+
+//OBTENIENDO ID Y CLASS NAME DEL NODO PADRE
+
+console.log('El id del nodo padre es: ' + nodoPadre.id)
+console.log('La clase del nodo padre es: ' + nodoPadre.className)
+
+var input = document.getElementById('input')
+
+console.log('El valor del input en HTML es: ' + input.value)
+
+var mensajePrueba = document.getElementById('mensajePrueba')
+
+console.log('Es el contenido del div mensaje prueba ' + mensajePrueba.innerHTML)
