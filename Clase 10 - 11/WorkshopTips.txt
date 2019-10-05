@@ -1,0 +1,14 @@
+1. Utilizar el maquetado de la clase 01.
+2. Suscribirnos a los eventos de los controles que queremos validar:
+- Nombre es requerido
+- DNI tiene que ser un numero positivo y que no exista en la lista.
+3. Crear los handlers o funciones que nos van a permitir procesar esas validaciones.
+4. Actualizar el estado del boton una vez validado el formulario.
+5. Crear un nuevo alumno, que esto incluye:
+- Persitirlo en un array o lista, y a su vez persitir esa lista en el localStorage
+ y a su vez mostrarla en pantalla.
+6. Debemos tener en cuenta al momento de la carga de la pagina, de que si la lista en el LocalStorage 
+tiene
+alumnos cargos, debo mostrarlos en el HTML.
+7. Para borrar un alumno, deberia buscar por DNI y borrarlo en caso de que exista.
+Para borrar un elemento de un array podemos utilizar el metodo SPLICE de array.
