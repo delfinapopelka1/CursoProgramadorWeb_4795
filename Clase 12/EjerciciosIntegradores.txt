@@ -1,0 +1,31 @@
+--- EJERCICIO 1 ---
+Escribir una funcion que reciba un arreglo de personas y que me devuelva la cantidad 
+de personas 
+que son mayores a 18 años.
+Y ese resultado que me devuelve la funcion, mostrarlo en la consola
+ o en un alert de la siguiente 
+manera:
+La cantidad de personas mayores a 18 años es: xxx
+
+--- EJERCICIO 2 ---
+Primero guardar un valor en el localStorage con un numero x
+
+Luego recuperar ese valor, sumarle uno y volverlo a guardar.
+Repetir este proceso 3 veces.
+Finalmente mostrar en pantalla el resultado final.
+
+--- EJERCICIO 3 ---
+Escribir uan funcion que reciba un nombre y una edad y cree un div HTML con un h1 con 
+el nombre 
+recibido
+y un p con el texto Mi edad es: xxx.
+(Repetir para 3 personas)
+
+--- EJERCICIO 4 ---
+Escribir una funcion que reciba un array de personas, elimine las 2 las primeras y 
+devuelva un nuevo 
+array 
+sin las personas mencionadas.
+Antes de devolverlo, agregar una nueva persona con los datos que quieran.
+
+
