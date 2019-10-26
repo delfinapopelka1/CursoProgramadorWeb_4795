@@ -79,7 +79,7 @@ function deleteStudent() {
 
   // Busco en el dom el nodo y lo elimino de la lista
   var node = document.getElementById(deleteDniValue)
-
+//PARA ELIMINARLO
   mainListNode.removeChild(node)
 
   deleteDniNode.value = ''
@@ -131,19 +131,20 @@ function searchStudentIndexByDni(dni, studentsList) {
     student = studentsList[i]
     if (dni === student.dni) {
       return i
+      //me retorna la posicion y no puedo agregarlo
     }
   }
-
+//puedo agregarlo a traves de la proxima funcion de abajo 
   return -1
 }
 
 function validateDniField(event) {
   var inputNode = event.target
-
+//debo parsearlo porque entra como string 
   var parsedValue = parseInt(inputNode.value, 10)
 
   var index = searchStudentIndexByDni(inputNode.value, studentsList)
-
+//ES ESTA FUNCION AGREGO dni 
   if (isNaN(parsedValue) || parsedValue <= 0 || index > -1) {
     inputNode.classList.remove('is-valid')
     inputNode.classList.add('is-invalid')
@@ -167,7 +168,7 @@ function validateRequiredField(event) {
 
   validateSubmitButton()
 }
-
+//validacion email
 function validateEmailField(event) {
   var inputNode = event.target
 
@@ -261,14 +262,15 @@ function searchStudent(event) {
   var searchListNode = document.getElementById('searchList')
 
   var index = searchStudentIndexByText(searchTextNode.value, studentsList)
-
+//accedo mediente la posicion que obtuve al arreglo 
   var student = studentsList[index]
 
   searchListNode.innerHTML = ''
 
   if (student) {
+    //si no existe se aniade 
     var studentNode = createStudentNode(student)
-
+//para agregar al estudiante a  la lista 
     searchListNode.appendChild(studentNode)
   }
 }
@@ -281,6 +283,7 @@ function searchStudentIndexByText(text, studentsList) {
   for (var i = 0; i < studentsList.length; i++) {
     student = studentsList[i]
     if (
+      //si el nombre o el texto es igual al que estoy buscando me va a dar la posicion para poder eliminarlo o mostrarlo
       includesText(text, student.firstName) ||
       includesText(text, student.lastName)
     ) {
