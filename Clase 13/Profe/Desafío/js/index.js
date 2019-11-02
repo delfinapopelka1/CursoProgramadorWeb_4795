@@ -18,8 +18,10 @@ $(document).ready(function () {
  * @param {HTMLEvent} event
  */
 
-  function validateEmtpyField (event) {
+  function validateEmtpyField(event) {
     var inputNode = $(this)
+
+    console.log('HOLAA')
 
     var errorText = ''
     inputNode.next().remove()
@@ -52,7 +54,7 @@ $(document).ready(function () {
  *
  * @param {HTMLEvent} event
  */
-  function validateEmailField (event) {
+  function validateEmailField(event) {
     var inputNode = $(this)
 
     var errorText = ''
@@ -95,7 +97,7 @@ $(document).ready(function () {
  * validateButton habilita el botón de submit si existen
  * al menos cuatro nodos con la clase is-valid
  */
-  function validateButton () {
+  function validateButton() {
     var validInputNodes = $('.is-valid')
 
     if (validInputNodes.length === 3) {
