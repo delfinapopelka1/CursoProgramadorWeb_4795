@@ -14,6 +14,7 @@ var mainListNode = document.getElementById('mainList')
 
 var student
 
+// dibuja uno por uno los estudiantes que estan en la lista
 for (var i = 0; i < studentsList.length; i++) {
   student = createStudentNode(studentsList[i])
 
