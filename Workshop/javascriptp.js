@@ -28,6 +28,7 @@ function getLocalList(key) {
   }
 
 
+//VALIDACION NOMBRE
 function inputBlurHanlderNombre (evento) {
     var nombreEvento = evento.target
     var valorElementoNombre = nombreEvento.value
@@ -47,7 +48,7 @@ var nombreInput = document.getElementById('firstName')
 nombreInput.onblur = inputBlurHanlderNombre
 
 
-
+//VALIDACION DNI
 function busquedaDniPorInput(dni,listaDeEstudiantes) {
     for (var posicion = 0; posicion < listaDeEstudiantes.length; posicion++){
         var alumno = listaDeEstudiantes[posicion]
@@ -85,10 +86,75 @@ var dniInput = document.getElementById('dni')
 
 dniInput.onblur = inputDniValidacion
 
-function EliminarAlumnoDni ()
+//ELIMINAR ESTUDIANTE CON DNI
+function eliminarAlumnoDniValidacion (evento){
+  var inputNode = event.target
+
+  var index = busquedaDniPorInput(inputNode.value, listaDeEstudiantes)
+
+  if (index > -1) {
+    // se habilita el botón
+    deleteStudentButtonNode.disabled = false
+  } else {
+    // Deshabilita el botón
+    deleteStudentButtonNode.disabled = true
+  }
+
+}
+
+var eliminarDniNode = document.getElementById('deleteDni')
+
+eliminarDniNode.oninput = eliminarAlumnoDniValidacion
+
+var botonEliminarEstudiante = document.getElementById('deleteStudentButton')
+
+botonEliminarEstudiante.onclick = eliminarEstudiante
+
+function eliminarEstudiante() {
+  var eliminarDniValid = eliminarDniNode.value
+
+  var index = busquedaDniPorInput(eliminarDniValid, listaDeEstudiantes)
+
+  // Elimino en la fuente de verdad
+  listaDeEstudiantes.splice(index, 1)
+
+  // Piso la lista del localStorage
+  setLocalList(localKeyList, listaDeEstudiantes)
+
+  // Busco en el dom el nodo y lo elimino de la lista
+  var node = document.getElementById(eliminarDniValid)
+//PARA ELIMINARLO de la lista html
+  mainListNode.removeChild(node)
+
+  eliminarDniNode.value = ''
+  eliminarDniBoton.disabled = true
+
+  console.log('Fuente de verdad luego de eliminar ', listaDeEstudiantes)
+}
+
+//VALIDACION EMAIL
+
+function validarEmail (evento){
+  var inputNode = event.target
+
+  if  (!inputNode.value ||
+  inputNode.value.indexOf('@') === -1 ||
+  inputNode.value.indexOf('.') === -1
+) {
+  inputNode.classList.remove('is-valid')
+  inputNode.classList.add('is-invalid')
+} else {
+  inputNode.classList.remove('is-invalid')
+  inputNode.classList.add('is-valid')
+}
+
+}
+
+var emailNode = document.getElementById('email')
+emailNode.onblur = validarEmail
 
 
-
+//AGREGAR ESTUDIANTE FUNCION
 function agregarEstudiante(){
     var  firstNameValue = firstNameNode.value
     var  lastNameValue = lastNameNode.Value
@@ -113,7 +179,6 @@ function agregarEstudiante(){
   
 
 
-
 function inputDeleteAlumno (dniIngresado, listaenbusqueda) {
 
     for (var i = 0; i < listaenbusqueda.length; i++) {
@@ -130,41 +195,3 @@ function inputDeleteAlumno (dniIngresado, listaenbusqueda) {
 var dniAlumnoEliminar = document.getElementById('deleteDni')
 
 dniAlumnoEliminar.onclick = inputDeleteAlumno
-/*Como hacerlo para que sea en el click del boton*/
-/*
-function inputBlurHandlerEmail (evento3){
-    var emailEvento = evento3.target
-    var valorElementoEmail = emailEvento.value
-    var expresionRegular = /\w+@\w+\[a-z]/
-
-    if ((!expresionRegular.test(correo))){
-        valorElementoEmail.classList.add('is-valid')
-        valorElementoEmail.classList.remove('is-invalid')
-  } else {
-        valorElementoEmail.classList.add('is-invalid')
-        valorElementoEmail.classList.remove('is-valid')
-  }
-
-    
-
-
-}
-
-
-var email = document.getElementById('email')
-
-email.onblur = inputBlurHandlerEmail
-
-
-/*function agregarAlumnoOnClick (alumnoParaAgregar, listaenbusqueda) {
-    for (var i = 0; i < listaenbusqueda.length; i++) {
-        var alumnoParaAgregar = listaenbusqueda[posicion] {
-            if (alumnoParaAgregar != i) {
-                var crearNodo = document.getElementsByClassName
-                crearNodo.innerHTML = alumnoParaAgregar
-                } else {
-                
-                }
-                }
-
-} */
